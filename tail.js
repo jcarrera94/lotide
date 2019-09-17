@@ -1,10 +1,10 @@
-let emoji = require('node-emoji');
+var emoji = require('node-emoji');
 
 const assertEqual = function(actual, expected) {
   if (actual === expected) {
-    console.log(`${emoji.get(':v:')} ${emoji.get(':v:')} ${emoji.get(':v:')} Assertion passed: ${actual} === ${expected}`);
+    console.log(`${emoji.get(':white_check_mark:')} ${emoji.get(':v:')} Assertion passed: ${actual} === ${expected}`);
   } else {
-    console.log(`${emoji.get(':-1:')} ${emoji.get(':-1:')} ${emoji.get(':-1:')} Assertion failed: ${actual} !== ${expected}`);
+    console.log(`${emoji.get(':red_circle:')} ${emoji.get(':-1:')} Assertion failed: ${actual} !== ${expected}`);
   }
 };
 
