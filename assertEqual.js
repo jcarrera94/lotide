@@ -1,4 +1,4 @@
-var emoji = require('node-emoji');
+let emoji = require('node-emoji');
 
 const assertEqual = function(actual, expected) {
   if (actual === expected) {
