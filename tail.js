@@ -1,4 +1,4 @@
-var emoji = require('node-emoji');
+let emoji = require('node-emoji');
 
 const assertEqual = function(actual, expected) {
   if (actual === expected) {
@@ -8,7 +8,7 @@ const assertEqual = function(actual, expected) {
   }
 };
 
-let tail =[];
+let tail = [];
 const getTail = function(array) {
 
   for (let i = 1; i < array.length; i++) {

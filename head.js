@@ -8,10 +8,10 @@ const assertEqual = function(actual, expected) {
   }
 };
 
-const head = function(array) {
-  let index0 = array[0];
-  return index0;
-}
+const getHead = function(array) {
+  let head = array[0];
+  return head;
+};
 
 assertEqual(head([5]), 5);
 assertEqual(head([]), "Labs");
