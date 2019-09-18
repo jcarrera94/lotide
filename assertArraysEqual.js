@@ -6,6 +6,9 @@ const eqArrays = function(arrayA, arrayB) {
   if (arrayA.length !== arrayB.length) {
     result = false;
   }
+  if (arrayA.length === 0 && arrayB.length === 0) {
+    result = true;
+  }
   for (let i = 0; i < arrayA.length; i++) {
     if (arrayA[i] === arrayB[i]) {
       result = true;
@@ -23,7 +26,6 @@ const assertArraysEqual = function(array1, array2) {
   } else {
     console.log(`${emoji.get(':red_circle:')} ${emoji.get(':-1:')} Assertion failed!`)
   }
-
 }
 
 assertArraysEqual([1, 2, 3], [1, 2, '3']);
