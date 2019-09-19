@@ -4,7 +4,7 @@ const eqArrays = function(arrayA, arrayB) {
   let result = null;
 
   if (arrayA.length !== arrayB.length) {
-    result = false;
+    return false;
   }
   if (arrayA.length === 0 && arrayB.length === 0) {
     result = true;
