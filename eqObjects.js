@@ -12,7 +12,7 @@ const eqArrays = function(arrayA, arrayB) {
   let result = null;
 
   if (arrayA.length !== arrayB.length) {
-    result = false;
+    return false;
   }
   if (arrayA.length === 0 && arrayB.length === 0) {
     result = true;
@@ -21,7 +21,7 @@ const eqArrays = function(arrayA, arrayB) {
     if (arrayA[i] === arrayB[i]) {
       result = true;
     } else {
-      result = false;
+      return false;
     }
   }
   return result;
@@ -45,18 +45,20 @@ const eqObjects = function(object1, object2) {
   
   for (const keys in object1) {
     
+    if (object2[keys] === undefined) {
+      return false;
+    }
+    
     if(!Array.isArray(object1[keys])) {
       if (object1[keys] === object2[keys]) {
         result = true;
       } else {
-        result = false;
-      }
-      if (result === false) {
-        return result;
+        return false;
       }
     }
     if(Array.isArray(object1[keys])) {
-      result = eqObjects(object1[keys], object2[keys]);
+      console.log(object1[keys], object2[keys]);
+      result = eqArrays(object1[keys], object2[keys]);
     }
     if (result === false) {
       return result;
@@ -65,23 +67,23 @@ const eqObjects = function(object1, object2) {
   return result;
 }
 
-//let ab = { a: "1", b: "2" };
-//let ba = { b: "2", a: "1" };
-//console.log(eqObjects(ab, ba));
-//
-//console.log('-------------------');
-//
-//let ab1 = { a: "1", b: "2" };
-//let ba1 = { b: "2", c: "1" };
-//console.log(eqObjects(ab1, ba1));
-//
-//console.log('-------------------');
-//
-//let ab2 = { a: "1", c: "2" };
-//let ba2 = { b: "2", a: "1" };
-//console.log(eqObjects(ab2, ba2));
-//
-//console.log('-------------------');
+let ab = { a: "1", b: "2" };
+let ba = { b: "2", a: "1" };
+console.log(eqObjects(ab, ba));
+
+console.log('-------------------');
+
+let ab1 = { a: "1", b: "2" };
+let ba1 = { b: "2", c: "1" };
+console.log(eqObjects(ab1, ba1));
+
+console.log('-------------------');
+
+let ab2 = { a: "1", c: "2" };
+let ba2 = { b: "2", a: "1" };
+console.log(eqObjects(ab2, ba2));
+
+console.log('-------------------');
 
 const cd = { c: "1", d: ["2", 3] };
 const dc = { d: ["2", 3], c: "1" };
