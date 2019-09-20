@@ -30,72 +30,69 @@ const eqArrays = function(arrayA, arrayB) {
   
 const eqObjects = function(object1, object2) {
   let result = null;
-  const arrayKeys1 = [];
-  const arrayKeys2 = [];
+  const arrayKeys1 = Object.keys(object1);
+  const arrayKeys2 = Object.keys(object2);
 
-  for (const keys in object1) {
-    arrayKeys1.push(keys);
-  }
-  for (const keys in object2) {
-    arrayKeys2.push(keys);
-  }
   if (arrayKeys1.length !== arrayKeys2.length) {
     return false;
   }
   
-  for (const keys in object1) {
+  for (let keys in object1) {
     
     if (object2[keys] === undefined) {
       return false;
     }
-    
-    if(!Array.isArray(object1[keys])) {
-      if (object1[keys] === object2[keys]) {
-        result = true;
-      } else {
+    if (!Array.isArray(object1[keys]) && typeof(object1[keys]) === 'object') {
+      if(!eqObjects(object1[keys], object2[keys])) {
+        return false;
+      }
+    } else if (Array.isArray(object1[keys])) {
+      console.log(object1[keys], object2[keys]);
+      console.log('arr');
+      return eqArrays(object1[keys], object2[keys]);
+    } else {
+      if (object1[keys] !== object2[keys]) {
         return false;
       }
     }
-    if(Array.isArray(object1[keys])) {
-      console.log(object1[keys], object2[keys]);
-      result = eqArrays(object1[keys], object2[keys]);
-    }
-    if (result === false) {
-      return result;
-    }
   }
-  return result;
+  return true;
 }
 
-let ab = { a: "1", b: "2" };
-let ba = { b: "2", a: "1" };
-console.log(eqObjects(ab, ba));
+// let ab = { a: "1", b: "2" };
+// let ba = { b: "2", a: "1" };
+// console.log(eqObjects(ab, ba));
 
-console.log('-------------------');
+// console.log('-------------------');
 
-let ab1 = { a: "1", b: "2" };
-let ba1 = { b: "2", c: "1" };
-console.log(eqObjects(ab1, ba1));
+// // let ab1 = { a: "1", b: "2" };
+// // let ba1 = { b: "2", c: "1" };
+// // console.log(eqObjects(ab1, ba1));
 
-console.log('-------------------');
+// // console.log('-------------------');
 
-let ab2 = { a: "1", c: "2" };
-let ba2 = { b: "2", a: "1" };
-console.log(eqObjects(ab2, ba2));
+// // let ab2 = { a: "1", c: "2" };
+// // let ba2 = { b: "2", a: "1" };
+// // console.log(eqObjects(ab2, ba2));
 
-console.log('-------------------');
+// // console.log('-------------------');
 
-const cd = { c: "1", d: ["2", 3] };
-const dc = { d: ["2", 3], c: "1" };
-console.log(eqObjects(cd, dc)); 
+// // const cd = { c: "1", d: ["2", 3] };
+// // const dc = { d: ["2", 3], c: "1" };
+// // console.log(eqObjects(cd, dc)); 
 
-const cd2 = { c: "1", d: ["2", 3, 4] };
-console.log(eqObjects(cd, cd2)); 
+// // const cd2 = { c: "1", d: ["2", 3, 4] };
+// // console.log(eqObjects(cd, cd2)); 
 
-let obj1 = {d: [1, 2], c: ['1', '2']};
-let obj2 = {c: ['1', '2'], a: [1, 2]};
-console.log(eqObjects(obj1, obj2)); 
+// let obj1 = {a: [1, 2], c: ['1', '2']};
+// let obj2 = {c: ['1', '2'], a: [1, 2]};
+// console.log(eqObjects(obj1, obj2)); 
 
+console.log(eqObjects({ a: { z: 1 }, b: 2, c:{ d: { e: { f: { f: 3}}}} }, 
+                      { a: { z: 1 }, b: 2, c:{ d: { e: { f: { g: 2}}}} })) // => false
 
-//let abc = { a: "1", b: "2", c: "3" };
-//console.log(eqObjects(abc, ab));
+console.log(eqObjects({aa: { a: { y: 0, z: 1 }, b: 2 }, bb: { c: { d: 1 }, e: 2, }}, 
+                      {aa: { a: { y: 0, z: 1 }, b: 2 }, bb: { c: { d: 1 }, e: 2, }})); // => true 
+
+console.log(eqObjects({ a: { b: { c: { d: 3}}}},
+                      { a: { b: { c: { hello: 3}}}}));
