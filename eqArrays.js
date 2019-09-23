@@ -3,7 +3,7 @@ const eqArrays = function(arrayA, arrayB) {
   let result = null;
 
   if (arrayA.length !== arrayB.length) {
-    result = false;
+    return false;
   }
   if (arrayA.length === 0 && arrayB.length === 0) {
     result = true;
@@ -12,7 +12,7 @@ const eqArrays = function(arrayA, arrayB) {
     if (arrayA[i] === arrayB[i]) {
       result = true;
     } else {
-      result = false;
+      return false;
     }
   }
   return result;
