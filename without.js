@@ -16,15 +16,4 @@ const without = function(source, undesired) {
 
 module.exports = without;
 
-const words = ["hello", "world", "lighthouse"];
-console.log(without(words, ["lighthouse"]));
-assertArraysEqual(words, ["hello", "world", "lighthouse"]); 
-console.log('------------------------------------');
-const words1 = ['1', '2', '3'];
-console.log(without(words1, [1, 2, '3']));
-assertArraysEqual(words1, ['1', '2', '3']); 
-console.log('------------------------------------');
-const words2 = ['hola', 1, 'hi', 3, 4, 'bonjour'];
-console.log(without(words2, [1, 'bonjour', '4', 'hi']));
-assertArraysEqual(words2, ['hola', 1, 'hi', 3, 4, 'bonjour']); 
 

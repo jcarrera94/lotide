@@ -16,7 +16,3 @@ const flatten =  function(source) {
 
 module.exports = flatten;
 
-console.log(flatten([1, 2, [3, 4], 5, 6, ['7', '8'], 9, '10']));
-assertArraysEqual(flatten([1, 2, [3, 4], 5, 6, ['7', '8'], 9, '10']), [1, 2, 3, 4, 5, 6, '7', '8', 9, '10']);
-console.log('----------------------------------');
-assertArraysEqual(flatten(['lighthouse', 'labs', ['rocks', '!']]), ['lighthouse', 'labs', 'rocks', '!']);

@@ -1,8 +1,8 @@
 {
-  "name": "lotide",
+  "name": "@jcarrera94/lotide",
   "version": "1.0.0",
   "description": "",
-  "main": "assertArraysEqual.js",
+  "main": "index.js",
   "directories": {
     "test": "tests"
   },
@@ -20,7 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/jcarrera94/lotide.git"
   },
-  "author": "",
+  "author": "Juan Carrera <juankarrera@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jcarrera94/lotide/issues"
