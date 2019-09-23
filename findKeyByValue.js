@@ -1,13 +1,3 @@
-let emoji = require('node-emoji');
-
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    console.log(`${emoji.get(':white_check_mark:')} ${emoji.get(':v:')} Assertion passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`${emoji.get(':red_circle:')} ${emoji.get(':-1:')} Assertion failed: ${actual} !== ${expected}`);
-  }
-};
-
 const findKeyByValue = function(object, value) {
   let result = undefined;
 
@@ -18,6 +8,8 @@ const findKeyByValue = function(object, value) {
   }
   return result;
 }
+
+module.exports = findKeyByValue;
 
 const bestTVShowsByGenre = { 
   sci_fi: "The Expanse",
